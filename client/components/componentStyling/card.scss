@@ -1,4 +1,67 @@
-h2 {
-  border: 2px solid red;
-  font-size: 50px;
+// h2 {
+//   // border: 2px solid red;
+//   // font-size: 50px;
+//   margin: 20px;
+// }
+
+.cardBox {
+  border: 4px solid lightblue;
+  flex-direction: column;
+  color: white;
+  width: 30%;
+  margin-left: 20px;
+}
+
+.title {
+  color: paleturquoise;
+  font-size: 24px;
+  margin: 10px;
+}
+
+.companyName {
+  margin: 10px;
+}
+
+.currentDate {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.interviewDate {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.contactInfo {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.contactEmail {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.contactNumber {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.companyURL {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.cardButtons {
+  text-align: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.updateButton {
+  margin-right: 5px;
+}
+
+.status {
+
 }
