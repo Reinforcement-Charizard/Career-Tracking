@@ -4,3 +4,6 @@ export const UPDATE_STATUS = "UPDATE_STATUS";
 export const UPDATE_NOTE = "UPDATE_NOTE";
 export const UPDATE_CARD = "UPDATE_CARD";
 export const ARCHIVE_CARD = "ARCHIVE_CARD";
+export const POPULATE_COLUMNS = "POPULATE_COLUMNS";
+export const ACTIVE_USER = "ACTIVE_USER";
+export const MOVE_CARD = "MOVE_CARD";

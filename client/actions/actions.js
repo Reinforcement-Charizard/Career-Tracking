@@ -38,4 +38,12 @@ export const updateCardAction = updateObject => ({
 });
 
 // store card
+export const populateColumns = populateColumns => ({
+    type: types.POPULATE_COLUMNS,
+    payload: populateColumns,
+});
 
+export const activeUser = activeUser => ({
+    type: types.ACTIVE_USER,
+    payload: activeUser,
+});
