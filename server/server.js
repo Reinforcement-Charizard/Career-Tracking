@@ -1,9 +1,22 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
+require('dotenv').config();
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 //OAuth
 
+app.use('/oauth', async(req,res,next) =>{
+    const url = /*oauth url*/ '';
+    try{
+        const response = await axios.post(url, {headers: {'Content-Type': 'application/json'}});
+        const token = response.data
+        const parsedToken = /*splitting the token we got back from oauth to send to the user api */ '';
+    } catch{
+
+    }
+});
 
 //Getting all the jobs from DB
 //Adding job to DB and rerender the jobs
