@@ -2,10 +2,13 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-//
+//OAuth
 
 
-
+//Getting all the jobs from DB
+//Adding job to DB and rerender the jobs
+//Updating current job from DB
+//Deleting job from DB and rerender the jobs
 
 
 
@@ -16,8 +19,8 @@ app.get('/', (req, res) => {
 
 
 //Invalid Route
-app.use((req,res) =>{
-    return res.end ('Not a valid path') 
+app.use((req, res) =>{
+    return res.send('Not a valid path') 
 })
 
 

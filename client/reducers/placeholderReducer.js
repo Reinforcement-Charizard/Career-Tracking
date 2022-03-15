@@ -8,7 +8,7 @@ const initialState = {
 
 const placeholderReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.PLACEHOLDER:
+    case types.ADD_CARD:
       let newPlaceholder = true;
       return {
         ...state,

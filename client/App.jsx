@@ -1,9 +1,10 @@
 import React from 'react';
+import './style.scss';
 
 const App = () => (
   <section>
     <div>
-      <h1>HelLo World</h1>
+      <h1>Hello World from App</h1>
     </div>
   </section>
 )
