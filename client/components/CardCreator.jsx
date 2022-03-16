@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
-import './componentStyling/cardCreator.scss'
+import './componentStyling/cardCreator.scss';
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   // create card
   updateCardAction: (createObject) => {
-    dispatch(actions.updateCardAction(createObject))
-  }
+    dispatch(actions.updateCardAction(createObject));
+  },
+});
 
-
-})
-
-
-const CardCreator = () => {
+function CardCreator() {
   // /api/addJob
   const { register, formState: { errors }, handleSubmit } = useForm();
   const onSubmit = data => {
@@ -28,7 +25,7 @@ const CardCreator = () => {
   }
 
   const date = new Date().toLocaleDateString().substring(0, 10); // -> 3/15/22
-  const [todaysDate, setTodaysDate] = useState(new Date().toISOString().substring(0, 10))
+  const [todaysDate, setTodaysDate] = useState(new Date().toISOString().substring(0, 10));
 
   return (
     <div className="cardCreator">
@@ -85,7 +82,7 @@ const CardCreator = () => {
         </form>
       </div>
     </div>
-  )
+  );
 }
 
 export default connect(null, mapDispatchToProps)(CardCreator);
