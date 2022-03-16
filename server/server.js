@@ -1,17 +1,29 @@
 const express = require('express');
 const app = express();
 const axios = require('axios');
+const path = require('path');
 const PORT = 3000;
-const router = express.Router();
-const jobController = require('./jobControllers')
+const cookieParser = require('cookie-parser')
+const router = require('./router.js')
+const jobControllers = require('./controllers/job-controllers.js')
 require('dotenv').config();
-
+let access_token;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(cookieParser());
 
 //OAuth
-app.use('/oauth', async(req,res,next) =>{
-    const url = /*oauth url*/ `https://github.com/login/oauth/access_token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${req.query.code}`
+
+app.get('/oauth', (req,res) => {
+        // axios post method that will redirect our user to the github authorization page
+        // then respond with a access token back from github 
+    console.log('ASDFG');
+    res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri=http://localhost:3000/oauth2`);
+    
+    })
+app.get('/oauth2', async(req,res,next) =>{
+    console.log('oauth2 hit')
+    const url =`https://github.com/login/oauth/access_token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${req.query.code}`
     try{
         //sending the user to the github oauth page
         const response = await axios.post(url, {headers: {'Content-Type': 'application/json'}});
@@ -27,7 +39,8 @@ app.use('/oauth', async(req,res,next) =>{
             }
         })
         //redirecting the user from login to home
-        res.redirect(`http://localhost:8080/? ${token}?name=${username.data.login}`);
+        res.cookie('username', username.data.login);
+        res.redirect(`http://localhost:8080/?${token}?name=${username.data.login}`);
     } catch (err) {
         console.log(err);
         return next(err);
@@ -37,8 +50,8 @@ app.use('/oauth', async(req,res,next) =>{
 //Put everything in router page and send all requests from client to the router
 app.use('/api', router);
 
-app.use('/signin',userController.checkUser, jobController.getJobs, (req,res) =>{
-
+app.use('/signin', jobControllers.checkUser, (req, res) =>{
+    console.log('went thru server to middleware')
     return res.status(200).json('' /* the res.locals info to show all the jobs for user */)
 })
 
@@ -58,7 +71,7 @@ app.use((err,req,res,next)=>{
     const defaultErr = {
         log: 'Express Error handler caught unknown middleware error',
         status: 400,
-        message: {err: 'An eroor has occured!'}
+        message: {err: 'An error has occured!'}
     };
     const errObj = Object.assign({},defaultErr,err);
     console.log(errObj);
@@ -69,3 +82,4 @@ app.use((err,req,res,next)=>{
 app.listen(PORT, ()=>{
     console.log(`Listening on port ${PORT}`)
 })
+
