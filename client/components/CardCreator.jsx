@@ -9,10 +9,7 @@ const mapDispatchToProps = dispatch => ({
   updateCardAction: (createObject) => {
     dispatch(actions.updateCardAction(createObject))
   }
-
-
 })
-
 
 const CardCreator = () => {
   // /api/addJob
@@ -38,12 +35,12 @@ const CardCreator = () => {
           <div className="inputDiv">
             <div className="inputDiv">
               <label className="inputLabel">Job Title</label>
-              <input className="inputClass" placeholder='Front-End Software Engineer' {...register("title", {reguired: true})}/>
+              <input className="inputClass" placeholder='ie: Front-End Software Engineer' {...register("title", {reguired: true})}/>
               {errors.title?.type === 'required' && "Job title is required!"}
             </div>
             <div className="inputDiv">
               <label className="inputLabel">Company Name</label>
-              <input className="inputClass" placeholder='Amazon' {...register("company", {reguired: true})}/>
+              <input className="inputClass" placeholder='ie: Amazon' {...register("company", {reguired: true})}/>
               {errors.company && "Company Name is required!"}
             </div>
             <div className="inputDiv">
