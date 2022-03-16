@@ -5,9 +5,9 @@ import * as actions from '../actions/actions';
 import './componentStyling/cardCreator.scss'
 
 const mapDispatchToProps = dispatch => ({
-  // update Card
-  updateCardAction: (updateObject) => {
-    dispatch(actions.updateCardAction(updateObject))
+  // create card
+  updateCardAction: (createObject) => {
+    dispatch(actions.updateCardAction(createObject))
   }
 
 
@@ -26,15 +26,30 @@ const CardCreator = () => {
         <div className="formDiv">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="inputDiv">
-              <input placeholder='Job Title' {...register("title")}/>
-              <input placeholder='Company' {...register("company")}/>
-              <input type="date" placeholder='Interview Date' {...register("company")}/>
-              <input type="date" placeholder=date {...register("company")}/>
-            </div>
-            <div className="inputDiv">
-              <input placeholder='Contact Email' {...register("contactEmail")}/>
-              <input placeholder='Contact Phone' {...register("contactPhone")}/>
-              <input placeholder='URL' {...register("url")}/>
+              <input className="inputClass" placeholder='Job Title' {...register("title")}/>
+              <input className="inputClass" placeholder='Company' {...register("company")}/>
+              <div className="dateDiv">
+                <label>Date Applied</label>
+                {/* <span> */}
+                  <input className="dateInput" type="date" value={date} {...register("dateApplied")}/>
+                {/* </span> */}
+              </div>
+              <div className="dateDiv">
+                <label>Interview Date</label>
+                <span>
+                  <input className="dateInput" type="date" placeholder='Interview Date' {...register("intDate")}/>
+                </span>
+              </div>
+              <input className="inputClass" placeholder='Contact Email' {...register("contactEmail")}/>
+              <input className="inputClass" placeholder='Contact Phone' {...register("contactPhone")}/>
+              <input className="inputClass" placeholder='URL' {...register("url")}/>
+              <select>
+                <option value="interested">Interested</option>
+                <option value="applied">Applied</option>
+                <option value="interviewOne">Interview #1</option>
+                <option value="interviewTwo">Interview #2</option>
+                <option value="offered">Offered</option>
+              </select>
             </div>
             <div className="notesDiv">
               <p id="notesLabel">Notes</p>

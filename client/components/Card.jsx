@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
-import './componentStyling/card.scss'
+import updateCard from './componentStyling/card.scss'
+
 
 const mapDispatchToProps = dispatch => ({
   // update Card
@@ -17,9 +18,12 @@ const date = new Date().toLocaleDateString();
 // event handler for deleting card
   // 
 const deleteCardEvent = (marketId) => {
+  // build structure of request
+
+  // await response
   fetch('http://localhost:8080/api/delete')
-    .then(() => {console.log('deleted!')})
-    .then((res) => {this.props.deleteCardAction(res.marketId)})
+    .then((res) => {res.json()})
+    .then((res) => {this.props.deleteCardAction(res.cardId)})
     .catch((err) => {console.log('error in deleteCardEvent: ', err)})
 };
 
@@ -60,7 +64,7 @@ const deleteCardEvent = (marketId) => {
       <span> {props.status} </span>
     </p>
     <div className="cardButtons">
-      <button className="updateButton" onClick = {(e) => console.log('updating')}>Update</button>
+      <button className="updateButton" onClick = {(e) => updateCard(this.props) }>Update</button>
       <button onClick = {(e) => {
         e.preventDefault();
         deleteCardEvent(props.marketId)

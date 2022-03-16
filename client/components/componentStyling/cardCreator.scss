@@ -3,52 +3,62 @@
   border: 2px solid rgb(0, 255, 76);
   margin: 20px;
   // justify-content: space-around;
-  // flex-direction: column;
-  // width: 300px;
+  flex-direction: column;
+  width: 40%;
+  min-width: 350px;
   // height: 300px;
-}
+  
+  #title {
+    display: flex;
+    justify-content: center;
+    font-size: 64px;
 
-#title {
-  display: flex;
-  justify-content: center;
-  font-size: 64px;
-}
+    .formDiv {
+      border: 2px solid red;
+      width: 90%;
+      margin: 20px;
+      
+      
+      .inputDiv {
+        border: 2px solid rgb(0, 183, 255);
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
 
-.formDiv {
-  border: 2px solid red;
-  width: 90%;
-  margin: 20px;
-}
+        .inputClass {
+          margin: 20px;
+          height: 20px;
+          width: 30%;
+          min-width: 250px;
+        }
+        
+        .dateDiv {
+          margin: 20px;
+          display: flex;
+          border: 2px solid green;
+          flex-direction: column;
 
-input {
-  margin: 20px;
-  height: 20px;
-  width: 30%;
-}
+          .dateInput {
+            width: 150px;
+            max-width: 100px;
+          }
+        }
 
-.inputDiv {
-  border: 2px solid rgb(0, 183, 255);
-  display: flex;
-  justify-content: space-between;
-}
+        .notesDiv {
+          border: 2px solid orange;
 
-.addJobButton {
-  text-align: center;
-  align-items: bottom;
-  margin-left: 10px;
-}
-
-.notesDiv {
-  border: 2px solid orange;
-}
-
-.notesInput {
-  justify-content: space-around;
-  width: 90%;
-  height: 60px;
-}
-
-#notesLabel {
-  margin: 5px;
-  font-size: 24px;
+          .notesInput {
+            justify-content: space-around;
+            width: 90%;
+            height: 60px;
+          }
+        }
+      }
+    }
+  }
+  .addJobButton {
+    text-align: center;
+    align-items: bottom;
+    margin-left: 10px;
+  }
 }

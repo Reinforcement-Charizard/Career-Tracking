@@ -3,110 +3,83 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import './componentStyling/updateCard.scss'
 
-const updateCard = (props) => {
-//recreate card but everything's an input field
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
     updateCardAction: (updateObject) => {
         dispatch(actions.updateCardAction(updateObject))
-      },
-});
+        },
+}); 
 
-//server call to updateCard
+
+const updateCard = (props) => {
+//recreate card but everything's an input field
+console.log('inside updateCard')
+
+const updateCardEvent = (props) => {
+  // build structure of request
+
+  // await response
+  fetch('https://localhost:8080/api/updateJob')
+    .then((res) => {res.json();})
+    .then((res) => {this.props.updateCardAction(res.locals)})
+    .catch((err) => {console.log('error in updateCardEvent: ', err)})
+};
 
 
 return (
-    <div class="updateCard">
-    <input placeholder={this.props.title} type="text"/>  
-    <input placeholder={this.props.companyName} type="text"/> 
+<div className="updateCard">
+  <div> UPDATE CARD </div> 
+  <label>Title: </label>
+    <span>
+      <input placeholder= 'SWE2' type="text"/>  
+    </span>
+  <label> Company: </label>
+    <span> 
+      <input placeholder= 'Google' type="text"/>
+    </span> 
     <p>
       <label className = "currentDate"> Application Date: </label>
         <span>
-            <input placeholder={this.props.date} type="text"/>
+            <input placeholder={props.date} type="text"/>
         </span>
     </p>      
     <p>
       <label className = "interviewDate">Interview Date: </label>
         <span> 
-            <input placeholder={this.props.interviewDate}/> 
+            <input placeholder={props.interviewDate}/> 
         </span>
     </p>
-    <p>
       <label className = "contactInfo">Contact Info: </label>
-        <p> 
+        <p>
           <label className='contactEmail'> Email: </label>
           <span> 
-            <label placeholder={this.props.contactEmail} />
+            <input placeholder={props.contactEmail} />
           </span>
-        </p>
-        <p> 
           <label className='contactNumber'> Number: </label>
           <span> 
-              <input placeholder={this.props.contactNumber} />
+              <input placeholder={props.contactNumber} />
           </span>
         </p>
-    </p>
     <p>
       <label className = "companyURL"> URL: </label>
       <span> 
-          <input placeholder={this.props.companyURL} />
+          <input placeholder={props.companyURL} />
       </span>
     </p>
     <p>
       <label className = "status"> Status: </label>
       <span> 
-          <input placeholder={this.props.status} />
+          <input placeholder={props.status} />
       </span>
     </p>
-    <button>Submit</button>
-    <button>Cancel</button>
+    <div className="updateCardButtons">
+      <button className="updateCardSubmit" onClick = {(e) => {
+        e.preventDefault();
+        updateCardEvent(props);
+      }}>Submit</button>
+      <button onClick= {(e)=>{window.location='http://localhost:8080/home'}}>Cancel</button>
     </div>
+</div>
 );
 };
 
-export default connect(null, mapDispatchToProps(updateCard))
-
-// const updateCardEvent = (props) => {
-//     fetch('http://localhost:8080/api/updateJob')
-//       .then(() => {console.log('updating job')})
-//       .then((res) => {this.props.updateCardAction(res.body)})
-//       .catch((err) => {console.log('error in updateCardEvent: ', err)})
-//   };
-
-{/* <div className="cardBox">
-    <h2 className = "title">{props.title}</h2>
-    <h3 className = "companyName">{props.companyName}</h3>
-    <p>
-      <label className = "currentDate"> Application Date: </label>
-        <span>{date}</span>
-    </p>
-    <p>
-      <label className = "interviewDate">Interview Date: </label>
-        <span> {props.interviewDate} </span>
-    </p>
-    <p>
-      <label className = "contactInfo">Contact Info: </label>
-        <p> 
-          <label className='contactEmail'> Email: </label>
-          <span> {props.contactEmail} </span>
-        </p>
-        <p> 
-          <label className='contactNumber'> Number: </label>
-          <span> {props.contactNumber} </span>
-        </p>
-    </p>
-    <p>
-      <label className = "companyURL"> URL: </label>
-      <span> {props.companyURL} </span>
-    </p>
-    <p>
-      <label className = "status"> Status: </label>
-      <span> {props.status} </span>
-    </p>
-    <div className="cardButtons">
-      <button className="updateButton" onClick = {(e) => console.log('updating')}>Update</button>
-      <button onClick = {(e) => {
-        e.preventDefault();
-        deleteCardEvent(props.marketId)
-        }}>Delete</button>
-    </div>
-  </div> */}
+export default connect(null, mapDispatchToProps)(updateCard)
