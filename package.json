@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "reinforcement",
   "version": "1.0.0",
@@ -50,3 +51,58 @@
     "webpack-dev-server": "^4.7.4"
   }
 }
+=======
+{
+  "name": "reinforcement",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./client/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": " nodemon ./server/server.js",
+    "start": "webpack serve --mode development --open",
+    "dev": "concurrently \"npm run start\" \"npm run server\"",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reinforcement-Charizard/Reinforcement-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Reinforcement-Charizard/Reinforcement-Project/issues"
+  },
+  "homepage": "https://github.com/Reinforcement-Charizard/Reinforcement-Project#readme",
+  "dependencies": {
+    "concurrently": "^7.0.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "fetch": "^1.1.0",
+    "nodemon": "^2.0.15",
+    "path": "^0.12.7",
+    "react": "^17.0.2",
+    "react-dnd": "^15.1.1",
+    "react-dnd-html5-backend": "^15.1.2",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.28.0",
+    "react-redux": "^7.2.6",
+    "sass": "^1.49.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.7",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "redux-devtools-extension": "^2.13.9",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  }
+}
+>>>>>>> 90c2f739c8dc9e6260e1c44486b2342058f0f464
