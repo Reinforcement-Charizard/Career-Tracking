@@ -30,7 +30,6 @@ const initialState = {
 
 const placeholderReducer = (state = initialState, action) => {
   switch (action.type) {
-<<<<<<< HEAD
     case types.POPULATE_COLUMNS:
       // call a function that parses thru the response from the server
       // expect to get [ {job data from database} ]
@@ -54,13 +53,6 @@ const placeholderReducer = (state = initialState, action) => {
 
       // add to new column
 
-=======
-    // delete card
-    case types.DELETE_CARD:
-      // create fetch request
-      fetch('http://localhost:3000/api/deleteJob')
-      // returns updated card list
->>>>>>> 18358dfc8615e10849baa69b5198623c076d2544
       return {
         ...state,
       };
