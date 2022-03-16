@@ -8,40 +8,41 @@ import * as types from '../constants/actionTypes';
 // export const ARCHIVE_CARD = "STORED_CARD";
 
 // add card action
-export const addCardAction = cardId => ({
-    type: types.ADD_CARD,
-    payload: cardId,
+export const addCardAction = (cardId) => ({
+  type: types.ADD_CARD,
+  payload: cardId,
 });
 
 // delete card action
-export const deleteCardAction = cardId => ({
-    type: types.DELETE_CARD,
-    payload: cardId,
+export const deleteCardAction = (cardId) => ({
+  type: types.DELETE_CARD,
+  payload: cardId,
 });
 
 // update status action
-export const updateStatusAction = status => ({
-    type: types.UPDATE_STATUS,
-    payload: status,
+export const updateStatusAction = (status) => ({
+  type: types.UPDATE_STATUS,
+  payload: status,
 });
 
 // add note action
-export const updateNoteAction = note => ({
-    type: types.UPDATE_NOTE,
-    payload: note
+export const updateNoteAction = (note) => ({
+  type: types.UPDATE_NOTE,
+  payload: note,
 });
 
 // update card
-export const updateCardAction = updateObject => ({
-    type: types.UPDATE_CARD,
-    payload: updateObject,
+export const updateCardAction = (updateObject) => ({
+  type: types.UPDATE_CARD,
+  payload: updateObject,
 });
 
 // store card
-export const populateColumns = populateColumns => ({
-    type: types.POPULATE_COLUMNS,
-    payload: populateColumns,
+export const populateColumns = (populateColumns) => ({
+  type: types.POPULATE_COLUMNS,
+  payload: populateColumns,
 });
+
 
 export const activeUser = activeUser => ({
     type: types.ACTIVE_USER,

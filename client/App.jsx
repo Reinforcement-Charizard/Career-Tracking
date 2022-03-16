@@ -1,8 +1,9 @@
 import React from 'react';
 import './style.scss';
-import Card from './components/Card.jsx'
-import CardCreator from './components/CardCreator.jsx'
-import UpdateCard from './components/updateCard.jsx'
+import Card from './components/Card.jsx';
+import CardCreator from './components/CardCreator.jsx';
+import UpdateCard from './components/updateCard.jsx';
+import CardsDisplay from './components/CardsDisplay.jsx';
 
 const url = new URL(window.location);
 const token = url.search; // ?access_token=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&scope=&token_type=bearer
