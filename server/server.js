@@ -4,7 +4,6 @@ const axios = require('axios');
 const PORT = 3000;
 const router = express.Router();
 const jobController = require('./jobControllers')
-const userController = require('./userControllers')
 require('dotenv').config();
 
 app.use(express.json());
@@ -37,6 +36,11 @@ app.use('/oauth', async(req,res,next) =>{
 
 //Put everything in router page and send all requests from client to the router
 app.use('/api', router);
+
+app.use('/signin',userController.checkUser, jobController.getJobs, (req,res) =>{
+
+    return res.status(200).json('' /* the res.locals info to show all the jobs for user */)
+})
 
 // accessing html file on root load
 app.get('/', (req, res) => {

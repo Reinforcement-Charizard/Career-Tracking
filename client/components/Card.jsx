@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions/actions';
-import './componentStyling/card.scss'
-
-
-function Card(props) {
-  return <h2>This is the Card component</h2>;
-}
-
-export default Card;
-=======
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
@@ -89,4 +76,3 @@ const deleteCardEvent = (marketId) => {
 
 // export default Card
 export default connect(null, mapDispatchToProps)(Card);
->>>>>>> 90c2f739c8dc9e6260e1c44486b2342058f0f464

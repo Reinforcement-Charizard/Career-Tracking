@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-import * as types from '../constants/actionTypes';
-
-const initialState = {
-  placeholderState: null,
-};
-
-
-
-const placeholderReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case types.ADD_CARD:
-      let newPlaceholder = true;
-      return {
-        ...state,
-        placeholderState: newPlaceholder,
-      };
-
-    default: {
-      return state;
-    }
-  }
-};
-
-export default placeholderReducer;
-=======
 import * as types from '../constants/actionTypes';
 
 function LinkedList() {
@@ -143,4 +117,3 @@ export default placeholderReducer;
 need an action that updates the activeUser
 
 */
->>>>>>> 90c2f739c8dc9e6260e1c44486b2342058f0f464
