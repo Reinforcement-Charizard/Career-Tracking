@@ -14,8 +14,8 @@ const App = () => (
     <div>
       <h1>Hello World from App</h1>
       <Card />
-      <CardCreator />
-      <UpdateCard />     
+      {/* <CardCreator /> */}
+      {/* <UpdateCard />      */}
     </div>
   </section>
 )

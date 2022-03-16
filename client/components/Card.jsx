@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
-import updateCard from './updateCard.jsx'
+import updateCard  from './updateCard.jsx'
 import './componentStyling/card.scss'
 
 const mapDispatchToProps = dispatch => ({
@@ -13,15 +13,16 @@ const mapDispatchToProps = dispatch => ({
 
 const Card = props => {
 
-const date = new Date().toLocaleDateString();
-
 // event handler for deleting card
   // 
-const deleteCardEvent = (marketId) => {
+const deleteCardEvent = (cardId) => {
   // build structure of request
-
   // await response
-  fetch('http://localhost:8080/api/delete')
+  fetch('http://localhost:8080/api/delete', {
+    method: 'DELETE',
+    body: { cardId: cardId },
+    headers: { 'Content-Type': 'application/json'}
+  })
     .then((res) => {res.json()})
     .then((res) => {this.props.deleteCardAction(res.cardId)})
     .catch((err) => {console.log('error in deleteCardEvent: ', err)})
@@ -39,7 +40,7 @@ const deleteCardEvent = (marketId) => {
     <h3 className = "companyName">Google</h3>
     <p>
       <label className = "currentDate"> Application Date: </label>
-        <span>{date}</span>
+        <span>{props.applicationDate}</span>
     </p>
     <p>
       <label className = "interviewDate">Interview Date: </label>
@@ -62,12 +63,25 @@ const deleteCardEvent = (marketId) => {
     </p>
     <p>
       <label className = "status"> Status: </label>
-      <span> {props.status} </span>
+      <span> 
+          <select className="selectClass">
+              <option value="interested">Interested</option>
+              <option value="applied">Applied</option>
+              <option value="interviewOne">Interview #1</option>
+              <option value="interviewTwo">Interview #2</option>
+              <option value="offered">Offered</option>
+            </select>
+      </span>
     </p>
+    <div className="notesDiv">
+            <p id="notesLabel">Notes</p>
+            <textarea  className="notesArea" rows="5" cols="36" placeholder='Notes' />
+          </div>
     <div className="cardButtons">
       <button className="updateButton" onClick = {(e) => {
         e.preventDefault();
-        updateCard(this.props)}}>Update</button>
+        window.location.assign('http://localhost:8080/home/api/updateJob')
+        }}>Update</button>
       <button onClick = {(e) => {
         e.preventDefault();
         deleteCardEvent(props.cardId)
