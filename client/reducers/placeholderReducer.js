@@ -8,8 +8,11 @@ const initialState = {
 
 const placeholderReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.ADD_CARD:
-      let newPlaceholder = true;
+    // delete card
+    case types.DELETE_CARD:
+      // create fetch request
+      fetch('http://localhost:3000/api/deleteJob')
+      // returns updated card list
       return {
         ...state,
         placeholderState: newPlaceholder,
