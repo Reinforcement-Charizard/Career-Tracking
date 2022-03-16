@@ -43,7 +43,8 @@ export const populateColumns = (populateColumns) => ({
   payload: populateColumns,
 });
 
-export const activeUser = (activeUser) => ({
-  type: types.ACTIVE_USER,
-  payload: activeUser,
+
+export const activeUser = activeUser => ({
+    type: types.ACTIVE_USER,
+    payload: activeUser,
 });
