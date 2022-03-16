@@ -66,13 +66,15 @@ const testData = [
   {
     title: 'Software Engineer',
     companyName: 'Google',
+    date: Date.now(),
     interviewDate: Date.now(),
-    status: 'applied',
+    status: 'interested',
     cardId: '1',
   },
   {
     title: 'Software Dev',
     companyName: 'Meta',
+    date: Date.now(),
     interviewDate: Date.now(),
     status: 'applied',
     cardId: '2',
@@ -80,6 +82,7 @@ const testData = [
   {
     title: 'Software Eng',
     companyName: 'Netflix',
+    date: Date.now(),
     interviewDate: Date.now(),
     status: 'interviewOne',
     cardId: '3',
@@ -87,6 +90,7 @@ const testData = [
   {
     title: 'Data Analyst',
     companyName: 'Target',
+    date: Date.now(),
     interviewDate: Date.now(),
     status: 'interviewTwo',
     cardId: '4',
@@ -94,6 +98,7 @@ const testData = [
   {
     title: 'Software Developer',
     companyName: 'Codesmith',
+    date: Date.now(),
     interviewDate: Date.now(),
     status: 'offered',
     cardId: '5',
@@ -101,6 +106,7 @@ const testData = [
   {
     title: 'UX Designer',
     companyName: 'Amazon',
+    date: Date.now(),
     interviewDate: Date.now(),
     status: 'applied',
     cardId: '6',
@@ -108,6 +114,7 @@ const testData = [
   {
     title: 'UI Designer',
     companyName: 'Best Buy',
+    date: Date.now(),
     interviewDate: Date.now(),
     status: 'offered',
     cardId: '7',
@@ -115,13 +122,15 @@ const testData = [
   {
     title: 'Software Engineer',
     companyName: 'Samsung',
+    date: Date.now(),
     interviewDate: Date.now(),
-    status: 'applied',
+    status: 'interested',
     cardId: '8',
   },
   {
     title: 'Software Developer',
     companyName: 'Hulu',
+    date: Date.now(),
     interviewDate: Date.now(),
     status: 'interviewTwo',
     cardId: '9',
@@ -129,6 +138,7 @@ const testData = [
   {
     title: 'Software Engineer',
     companyName: 'HBO',
+    date: Date.now(),
     interviewDate: Date.now(),
     status: 'interviewOne',
     cardId: '10',

@@ -16,7 +16,7 @@
   .formDiv {
     border: 2px solid red;
     width: 90%;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     margin-left: 20px;
     margin-right: 20px;
     
@@ -26,47 +26,55 @@
       justify-content: space-between;
       flex-direction: column;
 
-      .inputClass {
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-bottom: 10px;
-        height: 20px;
-        width: 30%;
-        min-width: 250px;
-      }
       
-      .dateDiv {
-        margin-left: 20px;
+      .inputDiv {
+        // margin-left: 20px;
         margin-right: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         display: flex;
         border: 2px solid green;
         flex-direction: column;
+        
+        .inputClass {
+          border: 2px solid ;
+          border-radius: 5px;
+          // margin-left: 20px;
+          margin-right: 20px;
+          margin-bottom: 5px;
+          height: 20px;
+          width: 30%;
+          min-width: 250px;
+        }
 
         .dateInput {
+          border: 2px solid ;
+          border-radius: 5px;
           width: 150px;
           max-width: 200px;
         }
       }
 
-      .notesDiv {
-        border: 2px solid orange;
+    }
+    .notesDiv {
+      border: 2px solid orange;
 
-        .notesArea {
-          justify-content: space-around;
-          width: 90%;
-          height: 60px;
-        }
+      .notesArea {
+        border: 2px solid ;
+        border-radius: 5px;
+        justify-content: space-around;
+        width: 90%;
+        height: 60px;
       }
-
-      .selectClass {
-        width: 258px;
-        min-width: 250px;
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-bottom: 10px;
-        height: 30px;
-      }
+    }
+    .selectClass {
+      border: 2px solid ;
+      border-radius: 5px;
+      width: 258px;
+      min-width: 250px;
+      // margin-left: 20px;
+      margin-right: 20px;
+      margin-bottom: 10px;
+      height: 30px;
     }
   }
   .addJobButton {
