@@ -33,18 +33,6 @@ function CardCreator() {
       <div className="formDiv">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="inputDiv">
-<<<<<<< HEAD
-            <input className="inputClass" placeholder="Job Title" {...register('title')} />
-            <input className="inputClass" placeholder="Company" {...register('company')} />
-            <div className="dateDiv">
-              <label>Date Applied</label>
-              <input
-                className="dateInput"
-                type="date"
-                defaultValue={todaysDate}
-                {...register('dateApplied')}
-              />
-=======
             <div className="inputDiv">
               <label className="inputLabel">Job Title</label>
               <input className="inputClass" placeholder='Front-End Software Engineer' {...register("title", {reguired: true})}/>
@@ -58,49 +46,9 @@ function CardCreator() {
             <div className="inputDiv">
               <label>Date Applied</label>
               <input className="dateInput" type="date" defaultValue={todaysDate} {...register("dateApplied")}/>
->>>>>>> react
             </div>
             <div className="inputDiv">
               <label>Interview Date</label>
-<<<<<<< HEAD
-              <span>
-                <input
-                  className="dateInput"
-                  type="date"
-                  placeholder="Interview Date"
-                  {...register('intDate')}
-                />
-              </span>
-            </div>
-            <input
-              className="inputClass"
-              placeholder="Contact Email"
-              {...register('contactEmail')}
-            />
-            <input
-              className="inputClass"
-              placeholder="Contact Phone"
-              {...register('contactPhone')}
-            />
-            <input className="inputClass" placeholder="URL" {...register('url')} />
-            <select className="selectClass">
-              <option value="interested">Interested</option>
-              <option value="applied">Applied</option>
-              <option value="interviewOne">Interview #1</option>
-              <option value="interviewTwo">Interview #2</option>
-              <option value="offered">Offered</option>
-            </select>
-          </div>
-          <div className="notesDiv">
-            <p id="notesLabel">Notes</p>
-            <textarea
-              className="notesArea"
-              rows="5"
-              cols="36"
-              placeholder="Notes"
-              {...register('notes')}
-            />
-=======
               <input className="dateInput" type="date" placeholder='Interview Date' {...register("intDate")}/>
             </div>
             <div className="inputDiv">
@@ -129,17 +77,10 @@ function CardCreator() {
           <div className="notesDiv">
             <p id="notesLabel">Notes</p>
             <textarea  className="notesArea" rows="5" cols="36" placeholder='Write something important to remember here' {...register("notes")}/>
->>>>>>> react
           </div>
           <input className='addJobButton' type="submit" value="Add Job"/>
         </form>
       </div>
-<<<<<<< HEAD
-      <div className="addJobButton">
-        <button>Add Job</button>
-      </div>
-=======
->>>>>>> react
     </div>
   );
 }

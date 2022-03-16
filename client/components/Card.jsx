@@ -96,14 +96,16 @@ function Card(props) {
 
     props.populateColumns(testData);
   };
-
   // event handler for deleting card
   //
-  const deleteCardEvent = (marketId) => {
+  const deleteCardEvent = (cardId) => {
     // build structure of request
-
     // await response
-    fetch('http://localhost:8080/api/delete')
+    fetch('http://localhost:8080/api/delete', {
+      method: 'DELETE',
+      body: { cardId },
+      headers: { 'Content-Type': 'application/json' },
+    })
       .then((res) => {
         res.json();
       })
@@ -129,7 +131,7 @@ function Card(props) {
       <h3 className="companyName">{props.companyName}</h3>
       <p>
         <label className="currentDate"> Application Date: </label>
-        <span>{date}</span>
+        <span>{props.applicationDate}</span>
       </p>
       <p>
         <label className="interviewDate">Interview Date: </label>
@@ -148,18 +150,30 @@ function Card(props) {
       </p>
       <p>
         <label className="companyURL"> URL: </label>
-        {/* <span> {props.companyURL} </span> */}
+        <span> {props.companyURL} </span>
       </p>
       <p>
         <label className="status"> Status: </label>
-        <span> {props.status} </span>
+        <span>
+          <select className="selectClass">
+            <option value="interested">Interested</option>
+            <option value="applied">Applied</option>
+            <option value="interviewOne">Interview #1</option>
+            <option value="interviewTwo">Interview #2</option>
+            <option value="offered">Offered</option>
+          </select>
+        </span>
       </p>
+      <div className="notesDiv">
+        <p id="notesLabel">Notes</p>
+        <textarea className="notesArea" rows="5" cols="36" placeholder="Notes" />
+      </div>
       <div className="cardButtons">
         <button
           className="updateButton"
           onClick={(e) => {
             e.preventDefault();
-            updateCard(this.props);
+            window.location.assign('http://localhost:8080/home/api/updateJob');
           }}
         >
           Update
