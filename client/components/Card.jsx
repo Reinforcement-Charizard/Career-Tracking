@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
-import updateCard from './componentStyling/card.scss'
-
+import updateCard from './updateCard.jsx'
+import './componentStyling/card.scss'
 
 const mapDispatchToProps = dispatch => ({
   // update Card
@@ -31,11 +31,12 @@ const deleteCardEvent = (marketId) => {
   // /api/updateJob
   // this needs to go elsewhere on the popup page for the update card
 
-
+  // {props.title}
+  // {props.companyName}
   return (
   <div className="cardBox">
-    <h2 className = "title">{props.title}</h2>
-    <h3 className = "companyName">{props.companyName}</h3>
+    <h2 className = "title">Software Engineer 2</h2>
+    <h3 className = "companyName">Google</h3>
     <p>
       <label className = "currentDate"> Application Date: </label>
         <span>{date}</span>
@@ -64,10 +65,12 @@ const deleteCardEvent = (marketId) => {
       <span> {props.status} </span>
     </p>
     <div className="cardButtons">
-      <button className="updateButton" onClick = {(e) => updateCard(this.props) }>Update</button>
+      <button className="updateButton" onClick = {(e) => {
+        e.preventDefault();
+        updateCard(this.props)}}>Update</button>
       <button onClick = {(e) => {
         e.preventDefault();
-        deleteCardEvent(props.marketId)
+        deleteCardEvent(props.cardId)
         }}>Delete</button>
     </div>
   </div>

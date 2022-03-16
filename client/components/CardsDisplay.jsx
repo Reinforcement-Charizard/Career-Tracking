@@ -13,6 +13,9 @@ const { interested, applied, interviewOne, interviewTwo, offered } = this.props.
 //drag and drop here ????
 
 // linkedlist thing
+  // loop and create new cards and push in columns
+
+// render card creator button on top right of the page
 
 // return 5 columns
 return (

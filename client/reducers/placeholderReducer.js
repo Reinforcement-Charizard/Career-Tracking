@@ -61,6 +61,80 @@ const initialState = {
   offered: new LinkedList(),
 };
 
+//dummy data
+const testData = [
+  {
+    title: 'Software Engineer',
+    companyName: 'Google',
+    interviewDate: Date.now(),
+    status: 'applied',
+    cardId: '1',
+  },
+  {
+    title: 'Software Dev',
+    companyName: 'Meta',
+    interviewDate: Date.now(),
+    status: 'applied',
+    cardId: '2',
+  },
+  {
+    title: 'Software Eng',
+    companyName: 'Netflix',
+    interviewDate: Date.now(),
+    status: 'interviewOne',
+    cardId: '3',
+  },
+  {
+    title: 'Data Analyst',
+    companyName: 'Target',
+    interviewDate: Date.now(),
+    status: 'interviewTwo',
+    cardId: '4',
+  },
+  {
+    title: 'Software Developer',
+    companyName: 'Codesmith',
+    interviewDate: Date.now(),
+    status: 'offered',
+    cardId: '5',
+  },
+  {
+    title: 'UX Designer',
+    companyName: 'Amazon',
+    interviewDate: Date.now(),
+    status: 'applied',
+    cardId: '6',
+  },
+  {
+    title: 'UI Designer',
+    companyName: 'Best Buy',
+    interviewDate: Date.now(),
+    status: 'offered',
+    cardId: '7',
+  },
+  {
+    title: 'Software Engineer',
+    companyName: 'Samsung',
+    interviewDate: Date.now(),
+    status: 'applied',
+    cardId: '8',
+  },
+  {
+    title: 'Software Developer',
+    companyName: 'Hulu',
+    interviewDate: Date.now(),
+    status: 'interviewTwo',
+    cardId: '9',
+  },
+  {
+    title: 'Software Engineer',
+    companyName: 'HBO',
+    interviewDate: Date.now(),
+    status: 'interviewOne',
+    cardId: '10',
+  },
+]
+
 /*
 
   cards stored on each stateful key like so:
