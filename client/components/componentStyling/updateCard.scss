@@ -1,14 +1,49 @@
 .updateCard {
     border: 2px solid white;
     color: white;
-    width: 50%;
+    width: 40%;
     background-color: brown;
 }
 
 .updateCardButtons {
     text-align: center;
+    margin-bottom: 5px;
 }
 
 .updateCardSubmit {
     margin-right: 5px;
 }
+
+.notesArea {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    width: 90%;
+  }
+  
+  .notesLabel {
+    margin-left: 10px;
+  }
+
+  .contactInfo {
+      font-weight: bold;
+
+  }
+
+  .updateCardDiv {
+      font-weight: bold;
+      font-size: 24px;
+  }
+
+  .updateTitle {
+      margin-left: 10px;
+  }
+
+  .updateCompany {
+      margin-left: 10px;
+  }
+
+  .notesLabel {
+      margin-left: 10px;
+  }
+
+  
