@@ -67,9 +67,15 @@ function colArrayMap(colArr) {
     return (
       <Card
         title={values[0].title}
-        companyName={values[0].companyName}
-        interviewDate={values[0].interviewDate}
+        companyName={values[0].company}
+        applicationDate={values[0].date}
+        contactEmail={values[0].contact_email}
+        interviewDate={values[0].interview_date}
         status={values[0].status}
+        notes={values[0].notes}
+        contactNumber={values[0].contact_phone}
+        companyURL={values[0].url}
+        cardId={values[0].card_id}
       />
     );
   });

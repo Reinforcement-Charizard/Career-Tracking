@@ -12,17 +12,23 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 //OAuth
 
 app.get('/oauth', (req,res) => {
         // axios post method that will redirect our user to the github authorization page
         // then respond with a access token back from github 
-    console.log('ASDFG');
     res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri=http://localhost:3000/oauth2`);
     
     })
 app.get('/oauth2', async(req,res,next) =>{
-    console.log('oauth2 hit')
     const url =`https://github.com/login/oauth/access_token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${req.query.code}`
     try{
         //sending the user to the github oauth page
@@ -42,7 +48,6 @@ app.get('/oauth2', async(req,res,next) =>{
         res.cookie('username', username.data.login);
         res.redirect(`http://localhost:8080/?${token}?name=${username.data.login}`);
     } catch (err) {
-        console.log(err);
         return next(err);
     }
 });

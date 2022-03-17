@@ -1,5 +1,36 @@
 body{
-    border: 2px solid hotpink;
-    background: linear-gradient(#1b47ad, #081229);
+    // border: 2px solid hotpink;
+    background: linear-gradient(#ad691b, #081229);
+    min-height: 1000px
+}
+
+h1{
+    text-align: center;
+    font-size: 50px
+}
+
+.appDiv {
+    // border: 2px solid green;
+    justify-content: center;
+}
+
+.buttonDiv {
+    // border: 2px solid red;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.appButton {
+    margin-right: 5px;
+  border: 3px solid rgb(39, 39, 39);
+  border-radius: 15px;
+  width: 150px;
+  height: 40px;
+}
+
+.cardCreatorDiv {
+    display: flex;
+    justify-content: center;
 }
 

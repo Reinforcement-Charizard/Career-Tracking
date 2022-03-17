@@ -1,6 +1,10 @@
 .cardCreator {
+  // position: absolute;
+  // top: 10vh;
+  // left: 10vw;
   background-color: slategray;
-  border: 2px solid rgb(0, 255, 76);
+  border: 10px solid rgb(39, 39, 39);
+  border-radius: 50px;
   margin: 20px;
   // justify-content: space-around;
   flex-direction: column;
@@ -11,28 +15,28 @@
   #title {
     display: flex;
     justify-content: center;
-    font-size: 64px;
+    font-size: 36px;
   }
   .formDiv {
-    border: 2px solid red;
+    // border: 2px solid red;
     width: 90%;
     margin-bottom: 5px;
     margin-left: 20px;
     margin-right: 20px;
     
     .inputDiv {
-      border: 2px solid rgb(0, 183, 255);
+      // border: 2px solid rgb(0, 183, 255);
       display: flex;
       justify-content: space-between;
       flex-direction: column;
 
       
       .inputDiv {
+        // border: 2px solid green;
         // margin-left: 20px;
         margin-right: 20px;
         margin-bottom: 5px;
         display: flex;
-        border: 2px solid green;
         flex-direction: column;
         
         .inputClass {
@@ -53,33 +57,41 @@
           max-width: 200px;
         }
       }
-
-    }
-    .notesDiv {
-      border: 2px solid orange;
-
-      .notesArea {
-        border: 2px solid ;
-        border-radius: 5px;
-        justify-content: space-around;
-        width: 90%;
-        height: 60px;
-      }
-    }
-    .selectClass {
-      border: 2px solid ;
-      border-radius: 5px;
-      width: 258px;
-      min-width: 250px;
-      // margin-left: 20px;
-      margin-right: 20px;
-      margin-bottom: 10px;
-      height: 30px;
     }
   }
-  .addJobButton {
+  .selectClass {
+    border: 2px solid ;
+    border-radius: 5px;
+    width: 258px;
+    min-width: 250px;
+    // margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    height: 30px;
+  }
+  .notesDiv {
+    // border: 2px solid orange;
+  
+    .notesArea {
+      border: 2px solid ;
+      border-radius: 5px;
+      // justify-content: space-around;
+      width: 90%;
+      // height: 60px;
+    }
+  }
+  .jobButtonDiv {
+    // border: 2px solid blue;
     text-align: center;
-    align-items: bottom;
-    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    .addJobButton {
+      margin-right: 5px;
+      border: 3px solid rgb(39, 39, 39);
+      border-radius: 15px;
+      width: 90px;
+      height: 40px;
+    }
   }
 }

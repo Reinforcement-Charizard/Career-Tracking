@@ -1,14 +1,24 @@
+.mainDiv {
+    // border: 2px solid red;
+    flex-direction: row;
+}
+
 .MainContainer {
-    border: 2px solid black;
+    // border: 2px solid rgb(131, 253, 17);
+    width: 250px;
 }
 
 .row {
-
+    display: flex;
+    margin: 10px;
 }
 
 .column {
     width: 18%;
-    border: 2px solid blue;
-    margin-right: 2px;
-    margin-left: 2px;
+    min-width: 250px;
+    // border: 2px solid blue;
+    margin: 20px;
+    // margin-right: 2px;
+    // margin-left: 2px;
 }
+	

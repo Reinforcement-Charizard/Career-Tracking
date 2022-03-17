@@ -1,8 +1,9 @@
 .updateCard {
-    border: 2px solid white;
-    color: white;
+    border: 10px solid rgb(39, 39, 39);
+    border-radius: 50px;
+    // color: white;
     width: 40%;
-    background-color: brown;
+    background-color: slateGray;
 }
 
 .updateCardButtons {
@@ -32,6 +33,7 @@
   .updateCardDiv {
       font-weight: bold;
       font-size: 24px;
+      margin: 20px; 
   }
 
   .updateTitle {
@@ -46,4 +48,10 @@
       margin-left: 10px;
   }
 
-  
+  .buttonStyle {
+    margin-right: 5px;
+    border: 3px solid rgb(39, 39, 39);
+    border-radius: 15px;
+    width: 90px;
+    height: 40px;
+  }

@@ -25,19 +25,37 @@ LinkedList.prototype.add = function (val) {
   this.tail = newNode;
 };
 
+LinkedList.prototype.edit = function (val) {
+  let currNode = this.head;
+  while(currNode){
+    if (currNode.val[val[0].card_id]){
+      currNode.val = val[0];
+      return;
+    }
+    currNode = currNode.next;
+  }
+}
+
 // removes first instance of the passed in value from linkedList
 LinkedList.prototype.remove = function (val) {
   // set current to this.head
   let currNode = this.head;
   // check if val is the head
-  if (this.head.val.hasOwnProperty(val)) {
-    this.head = currNode.next;
-    this.head.prev = null;
+  console.log(val)
+  if (this.head.val[val]) {
+    console.log('deleting head')
+    if (currNode.next){
+      this.head = currNode.next;
+      this.head.prev = null;
+    } else {
+      this.head = null;
+    }
     return;
   }
 
   while (currNode) {
-    if (currNode.val.hasOwnProperty(val)) {
+    console.log(currNode[val])
+    if (currNode.val[val]) {
       if (currNode.next === null) {
         this.tail = currNode.prev;
         this.tail.next = null;
@@ -54,11 +72,14 @@ LinkedList.prototype.remove = function (val) {
 
 const initialState = {
   activeUser: null,
+  user_id: null,
   interested: new LinkedList(),
   applied: new LinkedList(),
   interviewOne: new LinkedList(),
   interviewTwo: new LinkedList(),
   offered: new LinkedList(),
+  jobModal: false,
+  updateCardModal: false,
 };
 
 /*
@@ -75,7 +96,9 @@ const placeholderReducer = (state = initialState, action) => {
       const updatedState = { ...state };
       for (let i = 0; i < action.payload.length; i++) {
         const addedCard = {};
-        addedCard[action.payload[i]._id] = action.payload[i];
+        addedCard[action.payload[i].card_id] = action.payload[i];
+        console.log('adding card')
+        console.log(addedCard)
         updatedState[action.payload[i].status].add(addedCard);
       }
       console.log('this is the updatedState: ', updatedState);
@@ -84,17 +107,27 @@ const placeholderReducer = (state = initialState, action) => {
       };
 
     case types.DELETE_CARD:
-      const column = { ...state[action.payload[0].status] };
-      column.remove(action.payload[0]._id);
-
+      const newState = {...state}
+      const column = action.payload[0].status;
+      const list = newState[column];
+      list.remove(action.payload[0]._id);
       return {
         ...state,
-        column,
+        column: list
+      };
+    case types.EDIT_CARD:
+      const newStateEdit = {...state}
+      const columnEdit = action.payload[0].status;
+      const listEdit = newState[column];
+      list.edit(action.payload);
+      return {
+        ...state
       };
     case types.ACTIVE_USER:
       return {
         ...state,
-        activeUser: action.payload[0].username,
+        activeUser: action.payload.username,
+        user_id: action.payload.id,
       };
     case types.MOVE_CARD:
       // delete from previous column
@@ -103,6 +136,18 @@ const placeholderReducer = (state = initialState, action) => {
 
       return {
         ...state,
+      };
+    case types.DISPLAY_JOB_MODAL:
+
+      return {
+        ...state,
+        jobModal: action.payload,
+      };
+      case types.DISPLAY_UPDATE_MODAL:
+
+      return {
+        ...state,
+        updateCardModal: action.payload,
       };
 
     default: {

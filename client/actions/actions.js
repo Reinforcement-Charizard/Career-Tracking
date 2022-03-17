@@ -44,7 +44,22 @@ export const populateColumns = (populateColumns) => ({
 });
 
 
-export const activeUser = activeUser => ({
+export const activeUser = (activeUser) => ({
     type: types.ACTIVE_USER,
     payload: activeUser,
 });
+
+export const displayJobModal = (jobModal) => ({
+  type: types.DISPLAY_JOB_MODAL,
+  payload: jobModal,
+})
+
+export const displayUpdateModal = (updateModal) => ({
+  type: types.DISPLAY_UPDATE_MODAL,
+  payload: updateModal,
+})
+
+export const editCard = (cardData) => ({
+  type: types.EDIT_CARD,
+  payload: cardData,
+})

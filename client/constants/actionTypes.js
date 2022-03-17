@@ -7,3 +7,6 @@ export const ARCHIVE_CARD = "ARCHIVE_CARD";
 export const POPULATE_COLUMNS = "POPULATE_COLUMNS";
 export const ACTIVE_USER = "ACTIVE_USER";
 export const MOVE_CARD = "MOVE_CARD";
+export const DISPLAY_JOB_MODAL = "DISPLAY_JOB_MODAL";
+export const DISPLAY_UPDATE_MODAL = "DISPLAY_UPDATE_MODAL";
+export const EDIT_CARD = "EDIT_CARD";

@@ -6,7 +6,7 @@ jobControllers.getJobs = (req,res,next) =>{
         res.locals.data = "Invalid authentication";
         return next();
     }
-    const { username } = req.body;
+    const { username } = res.locals;
     const queryString = `SELECT *, cards._id AS card_id FROM cards INNER JOIN users ON user_id=users._id WHERE users.username=($1);` 
     db.query(queryString, [username])
         .then((result) => {
@@ -23,10 +23,13 @@ jobControllers.addJob = (req, res, next) =>{
         res.locals.data = "Invalid authentication";
         return next();
     }
-    const {user_id, title, company, date, notes, contact_email, contact_phone, url, status } = req.body;
-    const values = [user_id, title, company, date, notes, contact_email, contact_phone, url, status];
-    const queryString = `INSERT INTO cards (user_id, title, company, date, notes, contact_email, contact_phone, url, status) 
-                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`
+    console.log('received from front')
+    console.log(req.body)
+    const {user_id, title, company, date, notes, contact_email, contact_phone, url, status, interview_date } = req.body;
+    const values = [user_id, title, company, date, notes, contact_email, contact_phone, url, status, interview_date];
+    console.log(values)
+    const queryString = `INSERT INTO cards (user_id, title, company, date, notes, contact_email, contact_phone, url, status, interview_date) 
+                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *;`
     db.query(queryString, values)
         .then((result) => {
             res.locals.data = result.rows;
@@ -42,7 +45,6 @@ jobControllers.updateJob = (req,res,next) =>{
         return next();
     }
     const {card_id, user_id, title, company, date, notes, contact_email, contact_phone, url, status } = req.body;
-    console.log(req.body)
     const values = [card_id, user_id, title, company, date, notes, contact_email, contact_phone, url, status];
     const queryString = `UPDATE cards SET
                          user_id=$2, title=$3, company=$4, date=$5, notes=$6, contact_email=$7, contact_phone=$8, url=$9, status=$10
@@ -62,12 +64,12 @@ jobControllers.deleteJob = (req,res,next) =>{
         res.locals.data = "Invalid authentication";
         return next();
     }
-    const { card_id } = req.body;
-    const queryString = `DELETE FROM cards WHERE _id=$1 RETURNING *;`
+    const card_id = req.params.id;
+    console.log(card_id)
+    const queryString = `DELETE FROM cards WHERE _id=($1) RETURNING *;`
     db.query(queryString, [card_id])
         .then((result) => {
             res.locals.data = result.rows;
-            console.log('deleted', result.rows)
             return next();
         })
         .catch((err) => {
@@ -81,7 +83,7 @@ jobControllers.checkUser = (req, res, next) =>{
         res.locals.data = "Invalid authentication";
         return next();
     }
-    const { username } = req.body;
+    const { username } = res.locals;
     const queryString = `SELECT * FROM users WHERE username=($1);`
     function addUser(username){
         const queryString = `INSERT INTO users (username) VALUES ($1) RETURNING *;`

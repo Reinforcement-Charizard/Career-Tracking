@@ -4,12 +4,20 @@ import * as actions from '../actions/actions';
 import updateCard from './updateCard.jsx';
 import './componentStyling/card.scss';
 
+function mapStateToProps(state) {
+  const { placeholder } = state;  
+  return { 
+    updateModal: placeholder.updateCardModal,
+  }
+}
+
 const mapDispatchToProps = (dispatch) => ({
   // update Card
   deleteCardAction: (cardId) => {
     dispatch(actions.deleteCardAction(cardId));
   },
   populateColumns: (arg) => dispatch(actions.populateColumns(arg)),
+  displayUpdateModal: (arg) => dispatch(actions.displayUpdateModal(arg)),
 });
 
 function Card(props) {
@@ -101,21 +109,31 @@ function Card(props) {
   const deleteCardEvent = (cardId) => {
     // build structure of request
     // await response
-    fetch('http://localhost:8080/api/delete', {
+    console.log(cardId)
+    const reqBody = {card_id: cardId}
+    fetch(`http://localhost:3000/api/${cardId}`, {
       method: 'DELETE',
-      body: { cardId },
-      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
     })
-      .then((res) => {
-        res.json();
-      })
-      .then((res) => {
-        this.props.deleteCardAction(res.cardId);
+    .then((data) => data.json())
+    .then((res) => {
+        console.log('delete response is:')
+        console.log(res.data)
+        props.deleteCardAction(res.data);
       })
       .catch((err) => {
         console.log('error in deleteCardEvent: ', err);
       });
   };
+
+  function handleUpdateModal(event) {
+    event.preventDefault();
+    if (!props.updateModal) {
+      props.displayUpdateModal(true);
+    } else {
+      props.displayUpdateModal(false);
+    }
+  }
 
   // event handler for updating job
   // /api/updateJob
@@ -127,7 +145,9 @@ function Card(props) {
     <div className="cardBox">
       {/* <h2 className="title">Software Engineer 2</h2>
       <h3 className="companyName">Google</h3> */}
-      <h2 className="title">{props.title}</h2>
+      <div className="titleDiv">
+        <h2 className="title">{props.title}</h2>
+      </div>
       <h3 className="companyName">{props.companyName}</h3>
       <p>
         <label className="currentDate"> Application Date: </label>
@@ -141,11 +161,11 @@ function Card(props) {
         <label className="contactInfo">Contact Info: </label>
         <p>
           <label className="contactEmail"> Email: </label>
-          {/* <span> {props.contactEmail} </span> */}
+          <span> {props.contactEmail} </span>
         </p>
         <p>
           <label className="contactNumber"> Number: </label>
-          {/* <span> {props.contactNumber} </span> */}
+          <span> {props.contactNumber} </span>
         </p>
       </p>
       <p>
@@ -154,31 +174,24 @@ function Card(props) {
       </p>
       <p>
         <label className="status"> Status: </label>
-        <span>
-          <select className="selectClass">
-            <option value="interested">Interested</option>
-            <option value="applied">Applied</option>
-            <option value="interviewOne">Interview #1</option>
-            <option value="interviewTwo">Interview #2</option>
-            <option value="offered">Offered</option>
-          </select>
-        </span>
+        <span> {props.status} </span>
       </p>
       <div className="notesDiv">
         <p id="notesLabel">Notes</p>
-        <textarea className="notesArea" rows="5" cols="36" placeholder="Notes" />
+        <textarea className="notesArea" rows="5" cols="36" defaultValue={props.notes} />
       </div>
       <div className="cardButtons">
-        <button
+        {/* <button
           className="updateButton"
           onClick={(e) => {
             e.preventDefault();
             window.location.assign('http://localhost:8080/home/api/updateJob');
           }}
-        >
-          Update
-        </button>
+        > */}
+        <button className="updateButton" onClick={handleUpdateModal}>Update</button>
+        {props.updateModal ? <UpdateCard /> : null}
         <button
+        className="updateButton"
           onClick={(e) => {
             e.preventDefault();
             deleteCardEvent(props.cardId);
@@ -186,11 +199,10 @@ function Card(props) {
         >
           Delete
         </button>
-        <button onClick={handleDummyData}>Test</button>
       </div>
     </div>
   );
 }
 
 // export default Card
-export default connect(null, mapDispatchToProps)(Card);
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

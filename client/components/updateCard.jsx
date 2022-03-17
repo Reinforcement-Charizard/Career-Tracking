@@ -31,8 +31,8 @@ const updateCardEvent = () => {
   }
 
   // await response
-  fetch('https://localhost:8080/api/updateJob', {
-    method: 'POST',
+  fetch('https://localhost:8080/api', {
+    method: 'PATCH',
     body: reqBody,
     headers: { 'Content-Type': 'application/json'}
   })
@@ -103,7 +103,7 @@ return (
             <textarea  className="notesArea" rows="5" cols="36" placeholder='Notes'/>
           </div>
     <div className="updateCardButtons">
-      <button className="updateCardSubmit" onClick = {(e) => {
+      <button className="buttonStyle" onClick = {(e) => {
         e.preventDefault();
         updateCardEvent();
         document.getElementById('title').innerText = ''
@@ -115,7 +115,7 @@ return (
         document.getElementById('url').innerText = ''
         document.getElementsByClassName('selectClass').innerText = ''
       }}>Submit</button>
-      <button onClick= {(e)=>{window.location.assign('http://localhost:8080/home')}}>Cancel</button>
+      <button className="buttonStyle" onClick= {(e)=>{window.location.assign('http://localhost:8080/home')}}>Cancel</button>
     </div>
 </div>
 );

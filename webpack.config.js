@@ -23,8 +23,9 @@ module.exports = {
       "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Authorization"
     },
     proxy: {
-      '/auth': 'https://localhost:3000',
-      '/oauth': 'https://localhost:3000',
+      '/auth': 'http://localhost:3000',
+      '/oauth': 'http://localhost:3000',
+      '/api': 'http://localhost:3000'
     },
   },
   module: {
